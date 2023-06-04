@@ -22,16 +22,17 @@ services:
     networks:
       - my-network
   app:
-    container_name: info-sistemas-app
     build:
-      context: ./app
       dockerfile: Dockerfile
-    ports:
-      - 4200:4200
+      context: ./app
+    command: npm run start
     volumes:
       - ./app:/usr/src/app
-    networks:
-      - my-network
+      - /usr/src/app/node_modules
+    ports:
+      - 4200:4200
+    links:
+      - api
   db:
     image: mysql
     ports:
