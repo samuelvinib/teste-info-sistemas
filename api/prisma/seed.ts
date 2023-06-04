@@ -112,7 +112,7 @@ async function main() {
   });
   
 
-  console.log('Dados populados com sucesso:', { car1, car2 });
+  console.log('Dados populados com sucesso:', { car1, car2, car3, car4 });
 }
 
 main()

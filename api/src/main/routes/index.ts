@@ -1,13 +1,13 @@
 import { NextFunction, Request, Response, Router } from "express";
-import { createCar, listAllCars, deleteCar } from "../../controllers";
+import { createCar, getCars, updateCar, deleteCar } from "../../controllers";
 
 export const routes = Router();
 
 routes
-  .route('/')
+  .route('/:id?')
   .get(async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const car = await listAllCars(req);
+      const car = await getCars(req, res);
       res.json(car);
     } catch (error) {
       next(error);
@@ -19,6 +19,17 @@ routes
   .post(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const car = await createCar(req, res);
+      res.json(car);
+    } catch (error) {
+      next(error);
+    }
+  });
+
+routes
+  .route('/:id')
+  .put(async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const car = await updateCar(req, res);
       res.json(car);
     } catch (error) {
       next(error);

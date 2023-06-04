@@ -6,8 +6,8 @@ import bodyParser from 'body-parser';
 export const app = express();
 const port = process.env.SERVER_PORT || 3000;
 
-
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('/images',express.static('uploads'));
 app.use("/cars",routes);
 

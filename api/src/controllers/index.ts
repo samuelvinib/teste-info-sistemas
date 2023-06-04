@@ -3,7 +3,6 @@ import multer from 'multer';
 import prisma from "../db/prisma";
 import { v4 as uuidv4 } from 'uuid';
 import path from 'path';
-import { Car } from '@prisma/client';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -17,18 +16,36 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 
-export const listAllCars = async (req:any) => {
+export const getCars = async (req: Request, res: Response) => {
+  const carId  = parseInt(req.params.id);
   try {
-    var allDeposits = await prisma.car.findMany({
-      include:{
-        imagens:true
+    if (carId) {
+      const existingCar = await prisma.car.findUnique({
+        where: { id: Number(carId) },
+      });
+
+      if (!existingCar) {
+        return res.status(404).json({ message: 'Car not found' });
       }
-    })
-    return allDeposits;
+
+      const car = await prisma.car.findUnique({
+        where: { id: Number(carId) }, // Converta o ID para número, se necessário
+        include: {
+          imagens: true,
+        },
+      });
+      return res.status(200).json(car);
+    }
+    const car = await prisma.car.findMany({
+      include: {
+        imagens: true,
+      },
+    });
+    return res.status(200).json(car);
   } catch (error) {
-    throw error
+    throw error;
   }
-}
+};
 
 export const createCar = async (req: Request, res: Response) => {
   const { placa, chassi, renavam, modelo, marca, ano } = req.body;
@@ -57,7 +74,7 @@ export const createCar = async (req: Request, res: Response) => {
       const imagePath = path.join('images/', image.filename);
 
       // Criar o carro no banco de dados
-      const novoCarro: Car = await prisma.car.create({
+      const novoCarro = await prisma.car.create({
         data: {
           ...carData,
           imagens: {
@@ -79,6 +96,34 @@ export const createCar = async (req: Request, res: Response) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
+  }
+};
+
+export const updateCar = async (req: Request, res: Response) => {
+  const carId = parseInt(req.params.id);
+  const { placa, chassi, renavam, modelo, marca, ano } = req.body;
+  console.log(req.body)
+
+  try {
+    // Verifica se o carro existe antes de atualizá-lo
+    const existingCar = await prisma.car.findUnique({
+      where: { id: carId },
+    });
+
+    if (!existingCar) {
+      return res.status(404).json({ message: 'Car not found' });
+    }
+
+    // Atualiza os dados do carro
+    const updatedCar = await prisma.car.update({
+      where: { id: carId },
+      data: { placa, chassi, renavam, modelo, marca, ano },
+    });
+
+    return res.status(200).json(updatedCar);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: 'Internal server error' });
   }
 };
 
@@ -106,7 +151,7 @@ export const deleteCar = async (req: Request, res: Response)=>{
       where: { id: carId },
     });
 
-    return res.status(200).json({ message: 'Car and images deleted successfully' });
+    return res.status(200).json({ message: 'Car and images deleted successfully', car });
   } catch (error) {
     console.error(error);
     return res.status(500).json({ message: 'Internal server error' });
