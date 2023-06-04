@@ -25,12 +25,8 @@ services:
     build:
       dockerfile: Dockerfile
       context: ./app
-    command: npm run start
-    volumes:
-      - ./app:/usr/src/app
-      - /usr/src/app/node_modules
     ports:
-      - 4200:4200
+      - 8081:80
     links:
       - api
   db:
