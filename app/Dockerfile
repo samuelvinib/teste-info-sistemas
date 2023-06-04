@@ -1,24 +1,14 @@
-# Use uma imagem base do Node.js com o Angular CLI instalado
-FROM node:18-alpine
+FROM node AS development
 
-# Defina o diretório de trabalho dentro do contêiner
 WORKDIR /usr/src/app
 
-# Instale o Angular CLI globalmente
+COPY package*.json ./
+
+RUN npm install
 RUN npm install -g @angular/cli
 
-# Copie os arquivos de configuração e dependências
-COPY package.json .
-COPY package-lock.json .
+COPY . .
 
-# Instale as dependências
-RUN npm install
+RUN npm run build
 
-# Copie o código fonte do aplicativo Angular
-COPY src/ .
-
-# Expõe a porta do servidor Angular
 EXPOSE 4200
-
-# Inicie o servidor Angular
-CMD [ "ng", "serve", "--host", "0.0.0.0" ]
