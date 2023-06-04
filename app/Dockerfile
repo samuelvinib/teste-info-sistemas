@@ -1,5 +1,5 @@
 # Use uma imagem base do Node.js com o Angular CLI instalado
-FROM node:14-alpine
+FROM node:18-alpine
 
 # Defina o diretório de trabalho dentro do contêiner
 WORKDIR /usr/src/app
@@ -18,7 +18,7 @@ RUN npm install
 COPY src/ .
 
 # # Execute o build do aplicativo Angular
-# RUN ng build --prod
+RUN ng build --prod
 
 # Expõe a porta do servidor Angular
 EXPOSE 4200
