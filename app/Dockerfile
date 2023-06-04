@@ -17,9 +17,6 @@ RUN npm install
 # Copie o código fonte do aplicativo Angular
 COPY src/ .
 
-# # Execute o build do aplicativo Angular
-RUN ng build --prod
-
 # Expõe a porta do servidor Angular
 EXPOSE 4200
 
