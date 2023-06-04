@@ -17,9 +17,9 @@ services:
     volumes:
       - ./api:/usr/src/app
       - /usr/src/app/node_modules
+    command: sh -c "until nc -z db 3306; do sleep 1; done && npm start"  # Aguarda até que o banco de dados esteja acessível
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     networks:
       - my-network
   app:
