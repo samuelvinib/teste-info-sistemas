@@ -40,7 +40,7 @@
  ## Passo 3
    Acesse o container da API:
 ```bash
-  docker exec -it info-sistemas-api bash
+  docker exec -it info-sistemas-api sh
 ```
  ## Passo 4
    Dentro do container da API, crie as tabelas no banco de dados:
