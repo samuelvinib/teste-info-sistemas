@@ -42,13 +42,20 @@
 ```bash
   docker exec -it info-sistemas-api sh
 ```
+
  ## Passo 4
+   Crie o código do prisma Client para interagir com o banco de dados:
+```bash
+  npx prisma generate
+```
+
+ ## Passo 5
    Dentro do container da API, crie as tabelas no banco de dados:
 ```bash
   npx prisma db push
 ```
 
- ## Passo 5
+ ## Passo 6
    Em seguida, popule as tabelas com dados iniciais:
 ```bash
   npx prisma db seed
