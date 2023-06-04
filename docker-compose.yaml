@@ -21,16 +21,17 @@ services:
       - db
     networks:
       - my-network
-  # app:
-  #   build:
-  #     context: ./app
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - 4200:4200
-  #   volumes:
-  #     - ./app:/usr/src/app
-  #   networks:
-  #     - my-network
+  app:
+    container_name: info-sistemas-app
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    volumes:
+      - ./app:/usr/src/app
+    networks:
+      - my-network
   db:
     image: mysql
     ports:

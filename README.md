@@ -23,7 +23,7 @@
 
 # Instalação do projeto
 
-> - Este projeto foi construido com docker, é necessário possuir o docker instalado em sua máquina préviamente.
+> - Este projeto foi construido com docker, é necessário possuir o docker instalado em sua máquina previamente.
 
  ## Passo 1
    Após clonar o projeto em sua máquina navegue até o diretório raiz do projeto:
