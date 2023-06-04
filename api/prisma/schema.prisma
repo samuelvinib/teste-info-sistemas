@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://info:sistemas@db:3306/info_sistemas"
+}
+
+model Car {
+  id     Int     @id @default(autoincrement())
+  placa  String
+  chassi String
+  renavam String
+  modelo String
+  marca  String
+  ano    Int
+  imagens Image[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Image {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  tamanho   Int
+  tipo      String
+  caminho   String
+  carroId   Int
+  carro     Car      @relation(fields: [carroId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

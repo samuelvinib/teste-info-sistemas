@@ -2,7 +2,7 @@ import { NextFunction, Request, Response, Router } from "express";
 import { createCar } from "../../controllers";
 
 function createNewCar(req: Request, res: Response) {
-  return createCar();
+  return createCar(req);
 }
 
 export const routes = Router();

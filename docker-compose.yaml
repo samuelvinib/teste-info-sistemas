@@ -1,34 +1,45 @@
 version: '3'
 services:
   api:
+    container_name: info-sistemas-api
     build:
-      context: ./api
+      context: ./api/
       dockerfile: Dockerfile
+    environment:
+      SERVER_PORT: 3000
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_USER: info
+      MYSQL_DATABASE: info_sistemas
+      MYSQL_PASSWORD: sistemas
+      DATABASE_URL: mysql://info:sistemas@db:3306/info_sistemas
     ports:
       - 3000:3000
     volumes:
       - ./api:/usr/src/app
+      - /usr/src/app/node_modules
     depends_on:
       - db
     networks:
       - my-network
-  app:
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    ports:
-      - 4200:4200
-    volumes:
-      - ./app:/usr/src/app
-    networks:
-      - my-network
+  # app:
+  #   build:
+  #     context: ./app
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 4200:4200
+  #   volumes:
+  #     - ./app:/usr/src/app
+  #   networks:
+  #     - my-network
   db:
-    image: mysql:8.0
+    image: mysql
+    ports:
+      - "3306:3306"
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: mysecretpassword
-      MYSQL_DATABASE: infosistemas
+      MYSQL_ROOT_PASSWORD: secret
       MYSQL_USER: info
+      MYSQL_DATABASE: info_sistemas
       MYSQL_PASSWORD: sistemas
     networks:
       - my-network

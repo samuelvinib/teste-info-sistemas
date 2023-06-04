@@ -20,7 +20,7 @@ COPY src/ .
 # Execute o build do aplicativo Angular
 RUN ng build --prod
 
-# Expõe a porta do servidor Angular (ajuste para a porta correta, se necessário)
+# Expõe a porta do servidor Angular
 EXPOSE 4200
 
 # Inicie o servidor Angular

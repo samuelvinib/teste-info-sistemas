@@ -10,8 +10,6 @@ COPY package-lock.json .
 
 # Instale as dependências
 RUN npm install 
-RUN npm update mysql
-
 
 # Copie o código fonte da API
 COPY /src/ .
