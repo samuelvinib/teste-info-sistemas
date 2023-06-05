@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Forms
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
 
 // External Libraries
 import { TextMaskModule } from 'angular2-text-mask';
@@ -28,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
+import { CarFormComponent } from './components/car-form/car-form.component';
+import { CreateCarComponent } from './pages/create-car/create-car.component';
 
 
 @NgModule({
@@ -36,6 +40,8 @@ import { CardComponent } from './components/card/card.component';
     HomeComponent,
     HeaderComponent,
     CardComponent,
+    CarFormComponent,
+    CreateCarComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,9 @@ import { CardComponent } from './components/card/card.component';
     MatToolbarModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    MatCardModule
     ],
   providers: [],
   bootstrap: [AppComponent]

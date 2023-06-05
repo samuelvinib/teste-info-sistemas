@@ -4,6 +4,8 @@
 
 .mat-toolbar.mat-primary{background: #f1840f;}     
 
+.wrapper{ max-width: 1350px;  margin: 0 auto;}
+
 a{text-decoration: none; color:#FFF}
 
 .example-icon {padding: 1px 29px; background: #000;}
