@@ -10,12 +10,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 // External Libraries
 import { TextMaskModule } from 'angular2-text-mask';
-import { CPFPipe } from './pipes/cpf';
-import { PhonePipe } from './pipes/phone';
-
 
 // Components
-import { FormComponent } from './components/form/form.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CommonModule } from '@angular/common';
@@ -29,28 +25,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 
 // Pages
-import { RegisterComponent } from './pages/register/register.component';
 import { HomeComponent } from './pages/home/home.component';
-import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
-import { CarFormComponent } from './components/car-form/car-form.component';
-import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent,
-    RegisterComponent,
     HomeComponent,
-    EditUserComponent,
-    CPFPipe,
-    PhonePipe,
     HeaderComponent,
-    CardComponent,
-    CarFormComponent,
-    FormsModule
+    CardComponent
   ],
   imports: [
     BrowserModule,

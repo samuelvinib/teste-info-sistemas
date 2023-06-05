@@ -5,4 +5,5 @@ export interface Cars {
   modelo: string, 
   marca: string;
   ano: number;
+  imagens: any;
 }
