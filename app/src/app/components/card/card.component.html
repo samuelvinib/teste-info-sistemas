@@ -1,15 +1,16 @@
-<p>card works! {{car}}</p>
 <mat-card>
-    <mat-card-header>
-      <mat-card-title>Detalhes do Carro</mat-card-title>
-      <div class="car-images">
-        <ng-container >
-          <img class="car-image-single" src="{{apiEndpoint}}{{car.imagens[0].caminho}}" alt="Car Image">
-        </ng-container>
-        <ng-container *ngIf="car.imagens.length > 1">
-        </ng-container>
+
+      <div class="header-container">
+        <h1>{{car.modelo}}</h1>
+        <div class="car-images">
+          <ng-container >
+            <img class="car-image-single" src="{{apiEndpoint}}{{car.imagens[0].caminho}}" alt="Car Image">
+          </ng-container>
+          <ng-container *ngIf="car.imagens.length > 1">
+          </ng-container>
+        </div>
       </div>
-    </mat-card-header>
+
     <mat-card-content>
       <div class="car-details">
         <div class="car-info">
