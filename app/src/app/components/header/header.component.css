@@ -1,0 +1,13 @@
+.container{ width: 100%;}
+
+.wrapper{ max-width: 1350px;  margin: 0 auto;}
+
+.mat-toolbar.mat-primary{background: #000;}     
+
+a{text-decoration: none; color:#FFF}
+
+.example-icon {padding: 1px 29px;}
+
+.container-interno{display: flex; justify-content: space-around;height: unset !important; }
+
+.logo-icon { padding: 15px 0; width: 60px; margin-right: 20px;}

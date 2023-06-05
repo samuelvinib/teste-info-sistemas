@@ -1,6 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { User } from 'src/app/interfaces/User';
 
 
 
