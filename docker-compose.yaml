@@ -22,14 +22,14 @@ services:
       - db
     networks:
       - my-network
-  app:
-    build:
-      dockerfile: Dockerfile
-      context: ./app
-    ports:
-      - 4200:80
-    links:
-      - api
+  # app:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: ./app
+  #   ports:
+  #     - 4200:80
+  #   links:
+  #     - api
   db:
     image: mysql
     ports:

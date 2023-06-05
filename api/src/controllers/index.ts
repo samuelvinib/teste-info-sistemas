@@ -49,24 +49,18 @@ export const getCars = async (req: Request, res: Response) => {
 const upload = multer({ storage }).array('images', 5);
 
 export const createCar = async (req: Request, res: Response) => {
-  const { placa, chassi, renavam, modelo, marca, ano } = req.body;
-
-  try {
-    // Verificar se algum dado está faltando
-    if (!placa || !chassi || !renavam || !modelo || !marca || !ano) {
-      return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
+  upload(req, res, async (err: any) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
     }
 
-    // Executar o upload das imagens utilizando o middleware do multer
-    upload(req, res, async (err: any) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
-      }
+    const { placa, chassi, renavam, modelo, marca, ano } = req.body;
+    const anoInt = parseInt(ano, 10);
 
+    try {
       const images = req.files as Express.Multer.File[];
 
-      // Criar o carro no banco de dados
       const novoCarro = await prisma.car.create({
         data: {
           placa,
@@ -74,13 +68,13 @@ export const createCar = async (req: Request, res: Response) => {
           renavam,
           modelo,
           marca,
-          ano,
+          ano: anoInt,
           imagens: {
             create: images.map((image) => ({
               nome: image.filename,
               tamanho: image.size,
               tipo: image.mimetype,
-              caminho: image.path,
+              caminho: `images/${image.filename}`,
             })),
           },
         },
@@ -90,12 +84,13 @@ export const createCar = async (req: Request, res: Response) => {
       });
 
       return res.json(novoCarro);
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
-  }
+    } catch (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
+    }
+  });
 };
+
 
 export const updateCar = async (req: Request, res: Response) => {
   const carId = parseInt(req.params.id);

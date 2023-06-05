@@ -18,6 +18,7 @@ import { PhonePipe } from './pipes/phone';
 import { FormComponent } from './components/form/form.component';
 import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -33,6 +34,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { EditUserComponent } from './pages/edit-user/edit-user.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardComponent } from './components/card/card.component';
+import { CarFormComponent } from './components/car-form/car-form.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -45,7 +48,9 @@ import { CardComponent } from './components/card/card.component';
     CPFPipe,
     PhonePipe,
     HeaderComponent,
-    CardComponent
+    CardComponent,
+    CarFormComponent,
+    FormsModule
   ],
   imports: [
     BrowserModule,
@@ -61,6 +66,7 @@ import { CardComponent } from './components/card/card.component';
     MatToolbarModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    CommonModule
     ],
   providers: [],
   bootstrap: [AppComponent]

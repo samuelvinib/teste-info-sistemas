@@ -58,20 +58,15 @@ const getCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getCars = getCars;
 const upload = (0, multer_1.default)({ storage }).array('images', 5);
 const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { placa, chassi, renavam, modelo, marca, ano } = req.body;
-    try {
-        // Verificar se algum dado está faltando
-        if (!placa || !chassi || !renavam || !modelo || !marca || !ano) {
-            return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
+    upload(req, res, (err) => __awaiter(void 0, void 0, void 0, function* () {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
         }
-        // Executar o upload das imagens utilizando o middleware do multer
-        upload(req, res, (err) => __awaiter(void 0, void 0, void 0, function* () {
-            if (err) {
-                console.error(err);
-                return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
-            }
+        const { placa, chassi, renavam, modelo, marca, ano } = req.body;
+        const anoInt = parseInt(ano, 10);
+        try {
             const images = req.files;
-            // Criar o carro no banco de dados
             const novoCarro = yield prisma_1.default.car.create({
                 data: {
                     placa,
@@ -79,13 +74,13 @@ const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     renavam,
                     modelo,
                     marca,
-                    ano,
+                    ano: anoInt,
                     imagens: {
                         create: images.map((image) => ({
                             nome: image.filename,
                             tamanho: image.size,
                             tipo: image.mimetype,
-                            caminho: image.path,
+                            caminho: `images/${image.filename}`,
                         })),
                     },
                 },
@@ -94,12 +89,12 @@ const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 },
             });
             return res.json(novoCarro);
-        }));
-    }
-    catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
-    }
+        }
+        catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
+        }
+    }));
 });
 exports.createCar = createCar;
 const updateCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
