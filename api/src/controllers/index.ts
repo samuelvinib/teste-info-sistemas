@@ -61,6 +61,10 @@ export const createCar = async (req: Request, res: Response) => {
     try {
       const images = req.files as Express.Multer.File[];
 
+      if (images.length < 1) {
+        return res.status(400).json({ error: 'É necessário fornecer pelo menos uma imagem.' });
+      }
+
       const novoCarro = await prisma.car.create({
         data: {
           placa,
@@ -83,13 +87,14 @@ export const createCar = async (req: Request, res: Response) => {
         },
       });
 
-      return res.json(novoCarro);
+      return res.json({ message: "Criado com sucesso!", novoCarro });
     } catch (error) {
       console.error(error);
       return res.status(500).json({ error: 'Ocorreu um erro ao criar o carro.' });
     }
   });
 };
+
 
 
 export const updateCar = async (req: Request, res: Response) => {

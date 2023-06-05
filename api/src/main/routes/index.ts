@@ -8,7 +8,7 @@ routes
   .get(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const car = await getCars(req, res);
-      res.json(car);
+      return car;
     } catch (error) {
       next(error);
     }
@@ -19,7 +19,7 @@ routes
   .post(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const car = await createCar(req, res);
-      res.json(car);
+      return car;
     } catch (error) {
       next(error);
     }
@@ -30,7 +30,7 @@ routes
   .put(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const car = await updateCar(req, res);
-      res.json(car);
+      return car;
     } catch (error) {
       next(error);
     }
@@ -41,7 +41,7 @@ routes
   .delete(async (req: Request, res: Response, next: NextFunction) => {
     try {
       const car = await deleteCar(req, res);
-      res.json(car);
+      return car;
     } catch (error) {
       next(error);
     }

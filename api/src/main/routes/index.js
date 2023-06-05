@@ -18,7 +18,7 @@ exports.routes
     .get((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const car = yield (0, controllers_1.getCars)(req, res);
-        res.json(car);
+        return car;
     }
     catch (error) {
         next(error);
@@ -29,7 +29,7 @@ exports.routes
     .post((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const car = yield (0, controllers_1.createCar)(req, res);
-        res.json(car);
+        return car;
     }
     catch (error) {
         next(error);
@@ -40,7 +40,7 @@ exports.routes
     .put((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const car = yield (0, controllers_1.updateCar)(req, res);
-        res.json(car);
+        return car;
     }
     catch (error) {
         next(error);
@@ -51,7 +51,7 @@ exports.routes
     .delete((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const car = yield (0, controllers_1.deleteCar)(req, res);
-        res.json(car);
+        return car;
     }
     catch (error) {
         next(error);

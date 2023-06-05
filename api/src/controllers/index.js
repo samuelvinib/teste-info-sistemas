@@ -67,6 +67,9 @@ const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const anoInt = parseInt(ano, 10);
         try {
             const images = req.files;
+            if (images.length < 1) {
+                return res.status(400).json({ error: 'É necessário fornecer pelo menos uma imagem.' });
+            }
             const novoCarro = yield prisma_1.default.car.create({
                 data: {
                     placa,
@@ -88,7 +91,7 @@ const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                     imagens: true,
                 },
             });
-            return res.json(novoCarro);
+            return res.json({ message: "Criado com sucesso!", novoCarro });
         }
         catch (error) {
             console.error(error);
