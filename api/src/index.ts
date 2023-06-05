@@ -9,7 +9,7 @@ const port = process.env.SERVER_PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/images',express.static('uploads'));
+app.use('/cars/images',express.static('uploads'));
 app.use("/cars",routes);
 
 app.listen(port, () => {

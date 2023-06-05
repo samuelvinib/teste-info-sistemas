@@ -13,7 +13,7 @@ const port = process.env.SERVER_PORT || 3000;
 exports.app.use((0, cors_1.default)());
 exports.app.use(express_1.default.json());
 exports.app.use(express_1.default.urlencoded({ extended: true }));
-exports.app.use('/images', express_1.default.static('uploads'));
+exports.app.use('/cars/images', express_1.default.static('uploads'));
 exports.app.use("/cars", routes_1.routes);
 exports.app.listen(port, () => {
     console.log('API rodando na porta ' + port);

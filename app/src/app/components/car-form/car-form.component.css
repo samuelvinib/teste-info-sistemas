@@ -3,3 +3,18 @@ form {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+input[type="file"]{
+  padding: 20px 0;
+}
+
+button{
+  background-color: #000;
+  color: #fff;
+}
+
+@media only screen and (max-width: 425px) {
+  button{
+    margin: 20px auto;
+  }
+}

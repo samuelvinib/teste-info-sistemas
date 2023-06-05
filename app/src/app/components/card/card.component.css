@@ -1,0 +1,39 @@
+.mat-card {
+    margin-bottom: 20px;
+  }
+  
+  .car-details {
+    display: flex;
+  }
+  
+  .car-info {
+    flex: 1;
+  }
+  
+  .car-info div {
+    margin-bottom: 10px;
+  }
+  
+  .car-images {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .car-image-single {
+    max-width: 100%;
+    max-height: 400px;
+  }
+  
+  .mat-carousel-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .car-image {
+    max-width: 100%;
+    max-height: 400px;
+  }
+  

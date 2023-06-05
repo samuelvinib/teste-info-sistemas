@@ -1,4 +1,6 @@
 <div class="wrapper">
-
-<p>ola</p>
+    <div *ngFor="let car of cars">
+        <app-card [car]="car" ></app-card>
+        <!-- <img *ngFor="let images of car.imagens" src="{{endpoint}}{{images.caminho}}"> -->
+    </div>
 </div>

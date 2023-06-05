@@ -25,8 +25,8 @@
       <mat-form-field>
         <input class="file-name" matInput type="number" placeholder="Ano" [(ngModel)]="ano" name="ano" required>
       </mat-form-field>
-      <input type="file" placeholder="adicione uma imagem" (change)="onFileSelected($event)" multiple>
-      <button mat-raised-button color="primary" type="submit">Criar Carro</button>
+      <input type="file"  (change)="onFileSelected($event)" multiple>
+      <button mat-raised-button type="submit">Criar Carro</button>
     </form>
   </mat-card-content>
 </mat-card>

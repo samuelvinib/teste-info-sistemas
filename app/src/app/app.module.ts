@@ -59,7 +59,7 @@ import { CreateCarComponent } from './pages/create-car/create-car.component';
     MatProgressSpinnerModule,
     CommonModule,
     FormsModule,
-    MatCardModule
+    MatCardModule,
     ],
   providers: [],
   bootstrap: [AppComponent]
