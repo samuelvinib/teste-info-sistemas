@@ -15,17 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteCar = exports.updateCar = exports.createCar = exports.getCars = void 0;
 const multer_1 = __importDefault(require("multer"));
 const prisma_1 = __importDefault(require("../db/prisma"));
-const uuid_1 = require("uuid");
 const path_1 = __importDefault(require("path"));
 const storage = multer_1.default.diskStorage({
     destination: (req, file, cb) => {
         cb(null, 'uploads/');
     },
     filename: (req, file, cb) => {
-        cb(null, `${(0, uuid_1.v4)()}-${file.originalname}`);
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+        const ext = path_1.default.extname(file.originalname);
+        cb(null, uniqueSuffix + ext);
     },
 });
-const upload = (0, multer_1.default)({ storage });
 const getCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const carId = parseInt(req.params.id);
     try {
@@ -56,37 +56,39 @@ const getCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getCars = getCars;
+const upload = (0, multer_1.default)({ storage }).array('images', 5);
 const createCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { placa, chassi, renavam, modelo, marca, ano } = req.body;
     try {
-        // Extrair os dados do carro do corpo da requisição
-        const carData = {
-            placa,
-            chassi,
-            renavam,
-            modelo,
-            marca,
-            ano,
-        };
-        // Executar o upload do arquivo utilizando o middleware do multer
-        upload.single('image')(req, res, (err) => __awaiter(void 0, void 0, void 0, function* () {
+        // Verificar se algum dado está faltando
+        if (!placa || !chassi || !renavam || !modelo || !marca || !ano) {
+            return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
+        }
+        // Executar o upload das imagens utilizando o middleware do multer
+        upload(req, res, (err) => __awaiter(void 0, void 0, void 0, function* () {
             if (err) {
                 console.error(err);
-                return res.status(500).json({ error: 'Ocorreu um erro no upload do arquivo.' });
+                return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
             }
-            const image = req.file;
-            // Caminho completo da imagem
-            const imagePath = path_1.default.join('images/', image.filename);
+            const images = req.files;
             // Criar o carro no banco de dados
             const novoCarro = yield prisma_1.default.car.create({
-                data: Object.assign(Object.assign({}, carData), { imagens: {
-                        create: {
+                data: {
+                    placa,
+                    chassi,
+                    renavam,
+                    modelo,
+                    marca,
+                    ano,
+                    imagens: {
+                        create: images.map((image) => ({
                             nome: image.filename,
                             tamanho: image.size,
                             tipo: image.mimetype,
-                            caminho: imagePath,
-                        },
-                    } }),
+                            caminho: image.path,
+                        })),
+                    },
+                },
                 include: {
                     imagens: true,
                 },

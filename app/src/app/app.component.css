@@ -1,0 +1,15 @@
+*{ margin: 0; padding: 0; box-sizing: border-box; }
+
+body{background: aliceblue;}
+
+.container{ width: 100%; min-height: 65vh;}
+
+.wrapper{ max-width: 1350px;  margin: 0 auto;}
+
+.mat-toolbar.mat-primary{background: #00c8b3;}     
+
+a{text-decoration: none; color:#FFF}
+
+.example-icon {padding: 1px 29px;}
+
+.example-spacer {flex: 1 1 auto;}

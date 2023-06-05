@@ -1,0 +1,42 @@
+<div class="wrapper">
+    <form (ngSubmit)="submit()" class="example-form" [formGroup]="formData">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Nome completo (sem abreviação)</mat-label>
+          <input type="text" matInput formControlName="name">
+          <mat-error *ngIf="formData.get('name')?.errors?.['required'] && formData.get('name')?.touched">
+            Campo <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field  class="example-full-width" appearance="fill">
+          <mat-label>CPF</mat-label>
+          <input type="text" matInput formControlName="cpf" [textMask]="{mask: cpfMask}">
+          <mat-error *ngIf="formData.get('cpf')?.errors?.['required'] && formData.get('cpf')?.touched">
+            Campo <strong>obrigatório</strong>
+          </mat-error>   
+        </mat-form-field>
+      
+        <mat-form-field  class="example-full-width" appearance="fill">
+          <mat-label>Telefone</mat-label>
+          <input type="text" matInput  formControlName="phone" [textMask]="{mask: phoneMask}">
+          <mat-error *ngIf="formData.get('phone')?.errors?.['required'] && formData.get('phone')?.touched">
+            Campo <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+      
+        <mat-form-field  class="example-full-width" appearance="fill" >
+          <mat-label>Email</mat-label>
+          <input  matInput type="email" formControlName="email">
+          <mat-error *ngIf="formData.get('email')?.errors?.['required'] && formData.get('email')?.touched">
+            Campo <strong>obrigatório</strong>
+          </mat-error>
+          <mat-error *ngIf="formData.get('email')?.errors?.['email'] && formData.get('email')?.touched">
+            Formato de email <strong>inválido</strong>
+          </mat-error>
+        </mat-form-field>
+      
+        <button [disabled]="!formData.valid">
+          <span class="spinner" *ngIf="load; else spin"></span> <ng-template #spin>Editar</ng-template>
+        </button>
+      </form>
+</div>

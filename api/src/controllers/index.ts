@@ -9,12 +9,11 @@ const storage = multer.diskStorage({
     cb(null, 'uploads/');
   },
   filename: (req, file, cb) => {
-    cb(null, `${uuidv4()}-${file.originalname}`);
+    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
+    const ext = path.extname(file.originalname);
+    cb(null, uniqueSuffix + ext);
   },
 });
-
-const upload = multer({ storage });
-
 
 export const getCars = async (req: Request, res: Response) => {
   const carId  = parseInt(req.params.id);
@@ -47,43 +46,42 @@ export const getCars = async (req: Request, res: Response) => {
   }
 };
 
+const upload = multer({ storage }).array('images', 5);
+
 export const createCar = async (req: Request, res: Response) => {
   const { placa, chassi, renavam, modelo, marca, ano } = req.body;
 
   try {
-    // Extrair os dados do carro do corpo da requisição
-    const carData = {
-      placa,
-      chassi,
-      renavam,
-      modelo,
-      marca,
-      ano,
-    };
+    // Verificar se algum dado está faltando
+    if (!placa || !chassi || !renavam || !modelo || !marca || !ano) {
+      return res.status(400).json({ error: 'Todos os campos devem ser preenchidos' });
+    }
 
-    // Executar o upload do arquivo utilizando o middleware do multer
-    upload.single('image')(req, res, async (err: any) => {
+    // Executar o upload das imagens utilizando o middleware do multer
+    upload(req, res, async (err: any) => {
       if (err) {
         console.error(err);
-        return res.status(500).json({ error: 'Ocorreu um erro no upload do arquivo.' });
+        return res.status(500).json({ error: 'Ocorreu um erro no upload das imagens.' });
       }
 
-      const image = req.file as Express.Multer.File;
-
-      // Caminho completo da imagem
-      const imagePath = path.join('images/', image.filename);
+      const images = req.files as Express.Multer.File[];
 
       // Criar o carro no banco de dados
       const novoCarro = await prisma.car.create({
         data: {
-          ...carData,
+          placa,
+          chassi,
+          renavam,
+          modelo,
+          marca,
+          ano,
           imagens: {
-            create: {
+            create: images.map((image) => ({
               nome: image.filename,
               tamanho: image.size,
               tipo: image.mimetype,
-              caminho: imagePath,
-            },
+              caminho: image.path,
+            })),
           },
         },
         include: {

@@ -1,27 +1,33 @@
-# NomeDoProjeto
+# Cad User
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) na versão 14.2.6.
 
-## Development server
+## Objetivo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Realizar o cadastro de usuários atráves de um sistema web. Sendo possível visualizar a listagem, criar novos usuários, editar e deletar o mesmo.
 
-## Code scaffolding
+## Como abrir a aplicação?
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Primeiramente clone esse projeto para seu ambiente de desenvolvimento
 
-## Build
+2. Assim que abrir o projeto em sua IDLE preferida, no terminal digite `npm install`, para realizar a instalação do pacote `NPM`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3. Feito os passos acima, rode a aplicação com o seguinte comando: `ng serve`. Após alguns segundos acesse `http://localhost:4200/` e automaticamente será carregado a aplicação.
 
-## Running unit tests
+## Solução
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Após a leitura do documento, foi criado a lógica primária em papel para melhor entendimento de como funcionaria todo o sistema. Desde de arquitetura de pasta a como seria dividido as páginas e seus respectivos componentes.
 
-## Running end-to-end tests
+Em seguida a primeira parte a ser montada foi os formulários tanto de cadastro como de edição, implementando as devidas validações de campo, e a estilização do formulário.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Feito os passos anteriores, foi criado a parte de listagem dos usuários vindo da `API` fornecida e persistindo os dados em LocalStorage. A partir deste ponto foi implementado as funcionalidades de edição e deleção.
 
-## Further help
+## TESTE
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Bibliotecas utilizadas
+
+ - [Material UI](https://material.angular.io/);
+
+ - [Text Mask Input](https://www.npmjs.com/package/angular2-text-mask);
+
+
