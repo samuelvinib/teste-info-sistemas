@@ -2,11 +2,11 @@
 
 .wrapper{ max-width: 1350px;  margin: 0 auto;}
 
-.mat-toolbar.mat-primary{background: #000;}     
+.mat-toolbar.mat-primary{background: #f1840f;}     
 
 a{text-decoration: none; color:#FFF}
 
-.example-icon {padding: 1px 29px;}
+.example-icon {padding: 1px 29px; background: #000;}
 
 .container-interno{display: flex; justify-content: space-around;height: unset !important; }
 

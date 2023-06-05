@@ -35,7 +35,7 @@ import { CardComponent } from './components/card/card.component';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    CardComponent
+    CardComponent,
   ],
   imports: [
     BrowserModule,
