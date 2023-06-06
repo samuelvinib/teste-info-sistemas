@@ -44,6 +44,9 @@ import { RenavamDirective  } from './pipes/renavam';
 import { AnoPipe  } from './pipes/ano';
 import { AnoDirective  } from './pipes/ano';
 import { MaxLengthDirective  } from './pipes/max-length';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormEditComponent } from './components/form-edit/form-edit.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +64,9 @@ import { MaxLengthDirective  } from './pipes/max-length';
     RenavamDirective,
     AnoPipe,
     AnoDirective,
-    MaxLengthDirective
+    MaxLengthDirective,
+    ConfirmationDialogComponent,
+    FormEditComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +85,8 @@ import { MaxLengthDirective  } from './pipes/max-length';
     CommonModule,
     FormsModule,
     MatCardModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatDialogModule
     ],
   providers: [],
   bootstrap: [AppComponent]

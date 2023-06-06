@@ -17,7 +17,6 @@ export class HomeComponent implements OnInit {
       this.cars = this.http.get(environment.apiUrl)
         .subscribe(
           (response) => {
-            console.log(response)
             this.cars = response;
           },
           (error) => {
