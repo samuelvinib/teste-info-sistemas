@@ -1,0 +1,31 @@
+/* Estilos para o backdrop (fundo) do diálogo */
+.mat-dialog-container {
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Estilos para o conteúdo do diálogo */
+  .app-confirmation-dialog {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .app-confirmation-dialog h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .app-confirmation-dialog p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .app-confirmation-dialog button {
+    margin-right: 10px;
+  }
+  
