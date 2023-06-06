@@ -34,6 +34,16 @@ import { CardComponent } from './components/card/card.component';
 import { CarFormComponent } from './components/car-form/car-form.component';
 import { CreateCarComponent } from './pages/create-car/create-car.component';
 
+// Pipes
+import { PlacaPipe } from './pipes/placa';
+import { PlacaDirective } from './pipes/placa';
+import { ChassiPipe  } from './pipes/chassi';
+import { ChassiDirective  } from './pipes/chassi';
+import { RenavamPipe  } from './pipes/renavam';
+import { RenavamDirective  } from './pipes/renavam';
+import { AnoPipe  } from './pipes/ano';
+import { AnoDirective  } from './pipes/ano';
+import { MaxLengthDirective  } from './pipes/max-length';
 
 @NgModule({
   declarations: [
@@ -42,7 +52,16 @@ import { CreateCarComponent } from './pages/create-car/create-car.component';
     HeaderComponent,
     CardComponent,
     CarFormComponent,
-    CreateCarComponent
+    CreateCarComponent,
+    PlacaPipe,
+    PlacaDirective,
+    ChassiPipe,
+    ChassiDirective,
+    RenavamPipe,
+    RenavamDirective,
+    AnoPipe,
+    AnoDirective,
+    MaxLengthDirective
   ],
   imports: [
     BrowserModule,

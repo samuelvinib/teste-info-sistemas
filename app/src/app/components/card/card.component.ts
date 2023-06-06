@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { PlacaPipe } from 'src/app/pipes/placa';
 
 @Component({
   selector: 'app-card',

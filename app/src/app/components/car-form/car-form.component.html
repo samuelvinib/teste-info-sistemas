@@ -5,22 +5,22 @@
   <mat-card-content>
     <form (submit)="createCar()">
       <mat-form-field>
-        <input matInput placeholder="Placa" [(ngModel)]="placa" name="placa" required>
+        <input matInput placeholder="Placa" [(ngModel)]="placa" name="placa" required appPlaca>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Chassi" [(ngModel)]="chassi" name="chassi" required>
+        <input matInput placeholder="Chassi" [(ngModel)]="chassi" name="chassi" required appChassi>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Renavam" [(ngModel)]="renavam" name="renavam" required>
+        <input matInput placeholder="Renavam" [(ngModel)]="renavam" name="renavam" required appRenavam>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Modelo" [(ngModel)]="modelo" name="modelo" required>
+        <input matInput placeholder="Modelo" [(ngModel)]="modelo" name="modelo" required appMaxLength>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Marca" [(ngModel)]="marca" name="marca" required>
+        <input matInput placeholder="Marca" [(ngModel)]="marca" name="marca" required appMaxLength>
       </mat-form-field>
       <mat-form-field>
-        <input class="file-name" matInput type="number" placeholder="Ano" [(ngModel)]="ano" name="ano" required>
+        <input class="file-name" matInput type="number" placeholder="Ano" [(ngModel)]="ano" name="ano" required appAno>
       </mat-form-field>
       <input type="file"  (change)="onFileSelected($event)" multiple>
       <button mat-raised-button type="submit">Criar Carro</button>

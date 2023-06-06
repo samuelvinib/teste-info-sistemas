@@ -2,18 +2,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Pipe({
-  name: 'renavam'
+  name: 'ano'
 })
-export class RenavamPipe implements PipeTransform {
+export class AnoPipe implements PipeTransform {
   transform(value: string, args?: any): any {
     if (value) {
       value = value.replace(/\D/g, '');
 
-      if (value.length > 11) {
-        value = value.substring(0, 11);
+      if (value.length > 4) {
+        value = value.substring(0, 4);
       }
-
-      value = value.replace(/(\d{4})(\d{4})(\d{3})/, '$1 $2 $3');
     }
 
     return value;
@@ -21,9 +19,9 @@ export class RenavamPipe implements PipeTransform {
 }
 
 @Directive({
-  selector: '[appRenavam]'
+  selector: '[appAno]'
 })
-export class RenavamDirective {
+export class AnoDirective {
   constructor(private el: ElementRef) {}
 
   @HostListener('input', ['$event'])
@@ -31,8 +29,8 @@ export class RenavamDirective {
     const value = event.target.value;
     const formattedValue = value.replace(/\D/g, '');
 
-    if (formattedValue.length > 11) {
-      event.target.value = formattedValue.substring(0, 11);
+    if (formattedValue.length > 4) {
+      event.target.value = formattedValue.substring(0, 4);
     } else {
       event.target.value = formattedValue;
     }

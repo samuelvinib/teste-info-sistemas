@@ -4,6 +4,7 @@ import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-car-form',
