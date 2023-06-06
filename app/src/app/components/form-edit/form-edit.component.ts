@@ -35,8 +35,8 @@ export class FormEditComponent implements OnInit {
         }, 1000)
       },
       (error) => {
-        console.error('Erro ao criar o carro:', error);
-        this.toastr.error('Insira todos os dados e uma imagem para criar um carro', 'Erro');
+        console.error('Erro ao editar o carro:', error);
+        this.toastr.error('Algo saiu errado.', 'Erro');
       }
     );
 
