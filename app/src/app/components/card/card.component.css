@@ -19,6 +19,7 @@
   
   .car-info {
     flex: 1;
+    margin-left: 10px;
   }
   
   .car-info div {
@@ -50,3 +51,26 @@
     max-height: 400px;
   }
   
+  .buttons-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .button{
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 10px;
+    color: #000;
+    cursor: pointer;
+    width: 68px;
+  }
+  
+  .button.delete{
+    background-color:#d40303 ;
+  }
+
+  .button.edit{
+    background-color:#f1840f ;
+  }

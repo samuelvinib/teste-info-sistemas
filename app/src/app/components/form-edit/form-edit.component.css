@@ -1,0 +1,25 @@
+.mat-form-field{
+    width: 100%;
+}
+
+.buttons-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+
+  .button{
+    font-weight: bold;
+    border-radius: 3px;
+    color: #000;
+    cursor: pointer;
+    width: 88px;
+  }
+  
+  .button.edit{
+    background-color:green ;
+  }
+  .button.cancelar{
+    background-color:rgb(150, 150, 150) ;
+  }

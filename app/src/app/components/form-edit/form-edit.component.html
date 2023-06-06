@@ -1,0 +1,27 @@
+<h2>Edite os valores de seu carro.</h2>
+<form (submit)="onConfirm()">
+    <mat-form-field>
+        <input matInput placeholder="Placa" [(ngModel)]="data.placa" name="placa" required appPlaca>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Chassi" [(ngModel)]="data.chassi" name="chassi" required appChassi>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Renavam" [(ngModel)]="data.renavam" name="renavam" required appRenavam>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Modelo" [(ngModel)]="data.modelo" name="modelo" required appMaxLength>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Marca" [(ngModel)]="data.marca" name="marca" required appMaxLength>
+    </mat-form-field>
+    <mat-form-field>
+        <input class="file-name" matInput type="number" placeholder="Ano" [(ngModel)]="data.ano" name="ano" required
+            appAno>
+    </mat-form-field>
+    <p>Você tem certeza que deseja editar este carro?</p>
+    <div class="buttons-container">
+        <button class="button edit" type="submit" mat-button>Editar</button>
+        <button class="button cancelar" mat-button (click)="onCancel()">Cancelar</button>
+    </div>
+</form>

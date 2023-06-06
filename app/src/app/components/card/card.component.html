@@ -1,28 +1,31 @@
 <mat-card>
 
-      <div class="header-container">
-        <h1>{{car.modelo}}</h1>
-        <div class="car-images">
-          <ng-container >
-            <img class="car-image-single" src="{{apiEndpoint}}{{car.imagens[0].caminho}}" alt="Car Image">
-          </ng-container>
-          <ng-container *ngIf="car.imagens.length > 1">
-          </ng-container>
-        </div>
+  <div class="header-container">
+    <h1>{{car.modelo}}</h1>
+    <div class="car-images">
+      <ng-container>
+        <img class="car-image-single" src="{{apiEndpoint}}{{car.imagens[0].caminho}}" alt="Car Image">
+      </ng-container>
+      <ng-container *ngIf="car.imagens.length > 1">
+      </ng-container>
+    </div>
+  </div>
+  <hr>
+  <mat-card-content>
+    <div class="car-details">
+      <div class="car-info">
+        <div><strong>Placa:</strong> {{ car.placa | placa }}</div>
+        <div><strong>Chassi:</strong> {{ car.chassi | chassi }}</div>
+        <div><strong>Renavam:</strong> {{ car.renavam | renavam }}</div>
+        <div><strong>Modelo:</strong> {{ car.modelo }}</div>
+        <div><strong>Marca:</strong> {{ car.marca }}</div>
+        <div><strong>Ano:</strong> {{ car.ano }}</div>
       </div>
-
-    <mat-card-content>
-      <div class="car-details">
-        <div class="car-info">
-          <div><strong>Placa:</strong> {{ car.placa | placa }}</div>
-          <div><strong>Chassi:</strong> {{ car.chassi | chassi }}</div>
-          <div><strong>Renavam:</strong> {{ car.renavam | renavam }}</div>
-          <div><strong>Modelo:</strong> {{ car.modelo }}</div>
-          <div><strong>Marca:</strong> {{ car.marca }}</div>
-          <div><strong>Ano:</strong> {{ car.ano }}</div>
-        </div>
-      </div>
-    </mat-card-content>
-    <button (click)="openConfirmationPopup(car.id)">Excluir Carro</button>
-  </mat-card>
-  
+    </div>
+  </mat-card-content>
+  <hr>
+  <div class="buttons-container">
+    <button class="button delete" (click)="openConfirmationPopup(car.id)">Excluir</button>
+    <button class="button edit" (click)="openEditPopup(car)">Editar</button>
+  </div>
+</mat-card>
