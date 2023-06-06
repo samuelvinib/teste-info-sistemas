@@ -7,7 +7,7 @@
 > #
 > ## Projeto Backend - CRUD de Veículos em Node.js
 >
->Descrição: Um projeto de backend em Node.js que implementa operações CRUD (Create, Read, Update, Delete) para gerenciar dados de veículos. Os dados foram armazenos em um banco de dados. Inclui testes unitários utilizando Mocha.
+>Descrição: Um projeto de backend em Node.js que implementa operações CRUD (Create, Read, Update, Delete) para gerenciar dados de veículos. Os dados foram armazenos em um banco de dados.
 >
 > ## Projeto Frontend - Lista de Veículos em Angular
 > Descrição: Um projeto de frontend em Angular que exibe uma lista de veículos consumindo as APIs fornecidas pelo backend.

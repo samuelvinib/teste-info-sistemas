@@ -61,6 +61,7 @@
   .button{
     font-weight: bold;
     border-radius: 3px;
+    border: none;
     padding: 10px;
     color: #000;
     cursor: pointer;
@@ -72,5 +73,9 @@
   }
 
   .button.edit{
-    background-color:#f1840f ;
+    background-color:#007db1 ;
+  }
+  
+  .icon-color{
+    color: #fff;
   }
