@@ -18,3 +18,13 @@ button{
     margin: 20px auto;
   }
 }
+
+.container-capa{
+  margin: 20px 0;
+}
+
+.img-capa{
+  width: 250px;
+  height: 186px;
+  object-fit: cover;
+}

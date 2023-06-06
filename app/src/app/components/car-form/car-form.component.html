@@ -1,9 +1,6 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title>Adicione um novo carro</mat-card-title>
-    <div *ngFor="let safeUrl of safeImageUrls">
-      <img [src]="safeUrl" alt="Imagem">
-    </div>
   </mat-card-header>
   <mat-card-content>
     <form (submit)="createCar()">
@@ -28,5 +25,9 @@
       <input type="file"  (change)="onFileSelected($event)" multiple>
       <button mat-raised-button type="submit">Criar Carro</button>
     </form>
+    <div class="container-capa" *ngFor="let safeUrl of safeImageUrls">
+      <h1>Foto utilizada para capa:</h1>
+      <img class="img-capa" [src]="safeUrl" alt="Imagem">
+    </div>
   </mat-card-content>
 </mat-card>

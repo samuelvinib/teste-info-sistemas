@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-car-form',
@@ -17,7 +18,7 @@ export class CarFormComponent {
   ano!: number;
   files: File[] = [];
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router) {}
 
   selectedImages: File[] = [];
   safeImageUrls: SafeUrl[] = [];
@@ -42,7 +43,8 @@ export class CarFormComponent {
     this.http.post(environment.apiUrl, formData)
       .subscribe(
         (response) => {
-          console.log('Carro criado com sucesso!', response);
+          alert("Carro criado com sucesso!");
+          this.router.navigate(['/']);
         },
         (error) => {
           console.error('Erro ao criar o carro:', error);
