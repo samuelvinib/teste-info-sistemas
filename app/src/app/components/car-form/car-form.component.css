@@ -1,30 +1,84 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.card {
+  width: 400px; /* Ajuste o tamanho conforme necessário */
+  max-width: 90%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
 form {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
 
-input[type="file"]{
+input[type="file"] {
   padding: 20px 0;
 }
 
-button{
+button {
   background-color: #000;
   color: #fff;
 }
 
 @media only screen and (max-width: 425px) {
-  button{
+  button {
     margin: 20px auto;
   }
 }
 
-.container-capa{
+.container-capa {
   margin: 20px 0;
 }
 
-.img-capa{
+.img-capa {
   width: 250px;
   height: 186px;
   object-fit: cover;
+}
+
+.file-input {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.file-input input[type="file"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.file-input span {
+  margin-left: 10px;
+}
+
+.file-input:hover {
+  background-color: #e9e9e9;
+}
+
+.file-input:active {
+  background-color: #d9d9d9;
 }

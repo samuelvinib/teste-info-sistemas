@@ -3,10 +3,8 @@
   <div class="header-container">
     <h1>{{car.modelo}}</h1>
     <div class="car-images">
-      <ng-container>
+      <ng-container *ngIf="car.imagens.length > 0">
         <img class="car-image-single" src="{{apiEndpoint}}{{car.imagens[0].caminho}}" alt="Car Image">
-      </ng-container>
-      <ng-container *ngIf="car.imagens.length > 1">
       </ng-container>
     </div>
   </div>
