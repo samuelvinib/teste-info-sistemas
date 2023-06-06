@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-car-form',
@@ -18,13 +19,16 @@ export class CarFormComponent {
   ano!: number;
   files: File[] = [];
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router, private toastr: ToastrService) {}
 
   selectedImages: File[] = [];
   safeImageUrls: SafeUrl[] = [];
 
   getImageUrl(image: File): string {
     return URL.createObjectURL(image);
+  }
+  
+  ngOnInit(): void {
   }
 
   createCar() {
@@ -43,11 +47,14 @@ export class CarFormComponent {
     this.http.post(environment.apiUrl, formData)
       .subscribe(
         (response) => {
-          alert("Carro criado com sucesso!");
-          this.router.navigate(['/']);
+          this.toastr.success('Carro criado com sucesso!','Sucesso');
+          setTimeout(()=>{
+            this.router.navigate(['/']);
+          },1000)
         },
         (error) => {
           console.error('Erro ao criar o carro:', error);
+          this.toastr.error('Insira todos os dados e uma imagem para criar um carro', 'Erro');
         }
       );
   }

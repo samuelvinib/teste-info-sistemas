@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 
 // External Libraries
 import { TextMaskModule } from 'angular2-text-mask';
+import { ToastrModule } from 'ngx-toastr';
 
 // Components
 import { MatFormFieldModule} from '@angular/material/form-field';
@@ -60,6 +61,7 @@ import { CreateCarComponent } from './pages/create-car/create-car.component';
     CommonModule,
     FormsModule,
     MatCardModule,
+    ToastrModule.forRoot()
     ],
   providers: [],
   bootstrap: [AppComponent]
