@@ -1,4 +1,4 @@
-# Teste Info Tecnologia
+# Teste Crud Veiculos
 
 <img src="https://media.licdn.com/dms/image/C4D0BAQF7z1tSD1yohQ/company-logo_200_200/0/1672679506995?e=1694044800&v=beta&t=QyUh8FdJiCRVuf16s-5yqMtUIL-zGH8cM8qG453gZ90" width="128" style=" display: block;margin-left: auto;margin-right: auto;">
 
@@ -12,7 +12,6 @@
 > ## Projeto Frontend - Lista de Veículos em Angular
 > Descrição: Um projeto de frontend em Angular que exibe uma lista de veículos consumindo as APIs fornecidas pelo backend.
 >
-> ### Empresa: Info Tecnologia
 >#
 >
 > ## Tecnologias utilizadas no projeto:
